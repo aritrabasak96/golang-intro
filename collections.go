@@ -45,9 +45,27 @@ func  myArray()  {
 func mySlice(){
 	// everything that we can do with array, we can do with slice
 	// unlike a array, slice do not have a fixed size
+	// ** slice always refer to the underline array
+	// if you create a slice from that array and if you modify something on that slice, your array will also change so make sure that nothing is pointing to that array
 	a := []int{2,3,5,6,8,9}
 
-  a = append(a,12,23,45,66)
+        a = append(a,12,23,45,66)
+	
+	// slice spread operator 
+	op  := []int{}
+	
+	// add a existing slice to a new slice 
+	ap = append(op, []int{10,11,12,13,14}...)  // this is equivalent to ap = append(op,10,11,12,13,14)
+	
+	fmt.Println(ap)
+	
+	
+	// create slice using make keyword 
+	// why do we need that ?
+	// so when we add a new data into the slice go will create a new slice with specific size and copy all the data from previous slice and paste it
+	// so when we have a large data set it's very expensive operation 
+	// so we specify capacity. so when go create a slice it will define it's capacity and add value accordingly without creating or resizing a new slice
+	ap2 = make([]int,3,100)  // 100 = is the capacity of that slice 
 
 	fmt.Println("slice",a)
         
