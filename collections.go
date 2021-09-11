@@ -50,7 +50,8 @@ func mySlice(){
   a = append(a,12,23,45,66)
 
 	fmt.Println("slice",a)
-
+        
+	// [...]  = describe that it is an array 
 	b := [...]int{3,6,10,33,12}
 
 	c := b[2:] // from 2 to end o/p =>
