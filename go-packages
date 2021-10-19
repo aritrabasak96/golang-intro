@@ -1,0 +1,25 @@
+## go modules and packages 
+
+when you want to create a new package in golang, it will be a good practice that you place all your packages in a repository like github or gitlab 
+
+```
+   create a github account
+   
+   --------------- mypackages
+   .git
+    package1
+        ------- pac.go
+        ------- pac2.go
+        ------- pac3.go
+        
+    package2
+        ------- pac4.go
+        ------- pac5.go
+        ------- pac6.go
+
+```
+
+``` bash 
+
+
+```
