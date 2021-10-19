@@ -2,22 +2,7 @@
 
 when you want to create a new package in golang, it will be a good practice that you place all your packages in a repository like github or gitlab 
 
-```
-   create a github account
-   
-   --------------- mypackages
-   .git
-    package1
-        ------- pac.go
-        ------- pac2.go
-        ------- pac3.go
-        
-    package2
-        ------- pac4.go
-        ------- pac5.go
-        ------- pac6.go
 
-```
 
 ### Create Release using git
 
@@ -71,4 +56,72 @@ when you want to create a new package in golang, it will be a good practice that
     
 
 ```
+
+###  How to structure your go packages 
+
+```
+    ------------------- myfolder
+    .git
+    mypackage.go
+    testpackage.go
+    mainpackage.go
+    
+    git add .
+    git commit -m "msg"
+    git push origin master
+    git tag v1.0.1
+    git push origin v1.0.1
+
+```
+
+```go
+
+  // inside mainpackage.go 
+  
+  package mainpackage   // <------------------------------------- package name must be same as repo name
+  
+  func PrintName() string{
+       return "hello"
+  }
+
+```
+
+```
+   if your repo name is like that 
+   
+   github.com/aritrabasak/mainpackage    ( mainpackage is the repo name, and your all golang package name should be same )
+
+```
+
+### How to download packages in go
+
+```
+   main.go
+   
+   go mod init <any-name>
+   go list -m -versions github.com/aritrabasak/mypackage   # to check all the versions
+   go get github.com/aritrabasak/mypackage@v1.0.0
+   
+   
+   # inside your main.go file 
+   
+   package main
+   import "github.com/aritrabasak/mypackage"
+   import "fmt"
+   
+   func main(){
+      fmt.Println(mypackage.PrintName())
+   }
+   
+
+```
+
+
+
+
+
+
+
+
+
 
