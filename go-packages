@@ -1,0 +1,127 @@
+## go modules and packages 
+
+when you want to create a new package in golang, it will be a good practice that you place all your packages in a repository like github or gitlab 
+
+
+
+### Create Release using git
+
+``` bash 
+    
+    git inti
+    git add .
+    git commit -m ""
+    
+    git tag # to check all your checkpoints
+    git tag v1.0.0  # add checkpoint (this is how you create a version of every release)
+    
+    git push origin v1.0.0  # from a specific branch upload code 
+    git push origin master  # push code from master branch
+    
+    git push origin --tags # add all the tags 
+    
+    git tag -d v1.0.0   # to delete a specific tags from local repo
+    git push origin -d v1.0.0   # delete tags from public repo
+    
+    # create tag from previous commit 
+    git log   # to check all the previous commit 
+    git tag v1.0.3 e456ty6y     # e456ty6y is the commit id 
+    
+
+```
+
+## Undo or reverting changes 
+
+```bash
+    
+    # lets imagine that you have a file -> myfile.txt
+    # you add some content 
+    # and now you want to undo it 
+    git status
+    git checkout -- myfile.txt   # this command will undo your previos release
+    git checkout -- .     # undo all your files if you have many changes 
+    
+    # reverting to a previous commit 
+    git log
+    git revert <commit-id>
+    
+    # now do your changes 
+    git add .
+    git commit -m "bug fixes"   # a new release added
+    
+    
+    # delete previous commit and move to old commit 
+    git log
+    git reset --hard <commit-id>   # all the commit after this <commit-id> will be deleted
+    
+
+```
+
+###  How to structure your go packages 
+
+```
+    ------------------- myfolder
+    .git
+    mypackage.go
+    testpackage.go
+    mainpackage.go
+    
+    git add .
+    git commit -m "msg"
+    git push origin master
+    git tag v1.0.1
+    git push origin v1.0.1
+
+```
+
+```go
+
+  // inside mainpackage.go 
+  
+  package mainpackage   // <------------------------------------- package name must be same as repo name
+  
+  func PrintName() string{
+       return "hello"
+  }
+
+```
+
+```
+   if your repo name is like that 
+   
+   github.com/aritrabasak/mainpackage    ( mainpackage is the repo name, and your all golang package name should be same )
+
+```
+
+### How to download packages in go
+
+```
+   main.go
+   
+   go mod init <any-name>
+   go list -m -versions github.com/aritrabasak/mypackage   # to check all the versions
+   go get github.com/aritrabasak/mypackage@v1.0.0
+   
+   
+   # inside your main.go file 
+   
+   package main
+   import "github.com/aritrabasak/mypackage"
+   import "fmt"
+   
+   func main(){
+      fmt.Println(mypackage.PrintName())
+   }
+   
+
+```
+
+
+
+
+
+
+
+
+
+
